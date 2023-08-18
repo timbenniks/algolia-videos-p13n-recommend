@@ -11,12 +11,12 @@ const routes = [
   },
 ];
 
-function linkResolver(doc) {
-  if (doc.type === "video") {
-    return `/videos/${doc.uid}`;
-  }
-  return null;
-}
+// function linkResolver(doc) {
+//   if (doc.type === "video") {
+//     return `/videos/${doc.uid}`;
+//   }
+//   return null;
+// }
 
 const client = prismic.createClient("timbenniks", { routes });
 const result = await client.getByUID("video", route.params.video);
@@ -25,7 +25,7 @@ const document = {
   title: prismicH.asText(result.data.title),
   tags: result.tags,
   embed: result.data.video_embed.html,
-  content: prismicH.asHtml(result.data.content, linkResolver),
+  // content: prismicH.asHtml(result.data.content, linkResolver, null),
 };
 </script>
 
@@ -48,7 +48,7 @@ const document = {
     </ul>
     <div v-html="document.embed" class="aspect-video w-[800px] mb-12" />
 
-    <div v-html="document.content" class="w-[800px] prose" />
+    <!-- <div v-html="document.content" class="w-[800px] prose" /> -->
   </main>
 </template>
 
