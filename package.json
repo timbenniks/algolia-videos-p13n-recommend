@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxtjs/algolia": "^1.9.0",
+    "@nuxtjs/prismic": "^3.0.1",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@prismicio/client": "^7.1.1",
     "@prismicio/helpers": "^2.3.9",

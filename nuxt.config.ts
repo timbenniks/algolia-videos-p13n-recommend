@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/algolia', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/algolia', '@nuxtjs/tailwindcss', '@nuxtjs/prismic'],
 
   algolia: {
     apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
@@ -8,5 +8,8 @@ export default defineNuxtConfig({
     instantSearch: {
       theme: 'reset'
     }
+  },
+  prismic: {
+    endpoint: 'timbenniks'
   }
 })
