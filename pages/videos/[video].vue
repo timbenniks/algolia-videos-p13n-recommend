@@ -1,6 +1,7 @@
 <script setup>
-import { RichText } from "prismic-dom";
 import * as prismic from "@prismicio/client";
+import * as prismicH from "@prismicio/helpers";
+
 const route = useRoute();
 
 const routes = [
@@ -21,10 +22,10 @@ const client = prismic.createClient("timbenniks", { routes });
 const result = await client.getByUID("video", route.params.video);
 
 const document = {
-  title: RichText.asText(result.data.title),
+  title: prismicH.asText(result.data.title),
   tags: result.tags,
   embed: result.data.video_embed.html,
-  content: RichText.asHtml(result.data.content, linkResolver),
+  content: prismicH.asHtml(result.data.content, linkResolver),
 };
 </script>
 
