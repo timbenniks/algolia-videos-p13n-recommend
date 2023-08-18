@@ -8,7 +8,7 @@ const { data: document } = await useAsyncData(route.params.video, () =>
 
 <template>
   <head>
-    <title>{{ document.data.title.text }}</title>
+    <title>{{ document.data.title[0].text }}</title>
   </head>
   <main class="mx-auto max-w-[1280px] my-12 px-4 lg:px-0">
     <p>
