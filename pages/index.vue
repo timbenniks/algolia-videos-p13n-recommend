@@ -38,7 +38,14 @@ import {
         >
           <template v-slot:item="{ item }">
             <a :href="`/videos/${item.slug}`">
-              <img :src="item.image" :alt="item.title" class="mb-2" />
+              <img
+                :src="item.image"
+                :alt="item.title"
+                class="mb-2 aspect-video block"
+                loading="lazy"
+                width="1920"
+                height="1080"
+              />
               <p class="font-bold mb-2 text-lg">{{ item.title }}</p>
               <ul class="uppercase text-xs flex space-x-2">
                 <li
