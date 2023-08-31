@@ -5,8 +5,9 @@ export default defineNuxtConfig({
   algolia: {
     apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
     applicationId: process.env.ALGOLIA_APPLICATION_ID,
+    recommend: true,
     instantSearch: {
-      theme: 'reset'
+      theme: 'reset',
     }
   },
   prismic: {
