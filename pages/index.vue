@@ -11,19 +11,31 @@ import {
   AisClearRefinements,
   AisConfigure,
   AisSearchBox,
+  AisHighlight,
 } from "vue-instantsearch/vue3/es";
 
 const routing = {
   router: history(),
   stateMapping: simple(),
 };
+
+onMounted(() => {
+  window.aa("init", {
+    useCookie: true,
+    partial: true,
+  });
+});
 </script>
 
 <template>
   <ais-instant-search
     :index-name="indexName"
     :search-client="algolia"
-    :insights="true"
+    :insights="{
+      insightsInitParams: {
+        useCookie: true,
+      },
+    }"
     :routing="routing"
   >
     <ais-configure :hits-per-page.camel="65" />
@@ -61,26 +73,37 @@ const routing = {
               'grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3',
           }"
         >
-          <template v-slot:item="{ item }">
+          <template v-slot:item="{ item, sendEvent }">
+            <img
+              :src="item.image"
+              :alt="item.title"
+              class="mb-2 aspect-video block"
+              loading="lazy"
+              width="1920"
+              height="1080"
+            />
+
             <a :href="`/videos/${item.slug}`">
-              <img
-                :src="item.image"
-                :alt="item.title"
-                class="mb-2 aspect-video block"
-                loading="lazy"
-                width="1920"
-                height="1080"
-              />
-              <p class="font-bold mb-2 text-lg">{{ item.title }}</p>
-              <ul class="uppercase text-xs flex space-x-2">
-                <li
-                  v-for="tag in item.tags"
-                  class="rounded-lg px-2 py-1 bg-slate-200"
-                >
-                  {{ tag }}
-                </li>
-              </ul>
+              <p class="font-bold mb-2 text-lg">
+                <ais-highlight :hit="item" attribute="title" />
+              </p>
             </a>
+            <ul class="uppercase text-xs flex space-x-2">
+              <li>
+                <button
+                  @click="sendEvent('click', item, 'Item Starred')"
+                  class="bg-slate-800 text-slate-100 hover:bg-slate-700 hover:underline uppercase text-xs font-bold px-2 py-1 rounded-lg"
+                >
+                  I like this
+                </button>
+              </li>
+              <li
+                v-for="tag in item.tags"
+                class="rounded-lg px-2 py-1 bg-slate-200"
+              >
+                {{ tag }}
+              </li>
+            </ul>
           </template>
         </ais-hits>
       </div>

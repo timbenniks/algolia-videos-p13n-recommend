@@ -1,0 +1,32 @@
+[
+  {
+    "term": "image",
+    "click_position": 2,
+    "click_through_rate": 3
+  },
+  {
+    "term": "interview",
+    "click_position": 4,
+    "click_through_rate": 3
+  },
+  {
+    "term": "career",
+    "click_position": 5,
+    "click_through_rate": 3
+  },
+  {
+    "term": "soft skills",
+    "click_position": 3,
+    "click_through_rate": 3
+  },
+  {
+    "term": "tim tries",
+    "click_position": 5,
+    "click_through_rate": 3
+  },
+  {
+    "term": "webpack",
+    "click_position": 4,
+    "click_through_rate": 3
+  }
+]

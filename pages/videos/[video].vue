@@ -19,10 +19,6 @@ onMounted(async () => {
     ],
   });
 });
-
-function sendEvent() {
-  console.log("send event");
-}
 </script>
 
 <template>
@@ -40,14 +36,6 @@ function sendEvent() {
       :field="document.data.title"
     />
 
-    <section class="mb-8">
-      <button
-        @click="sendEvent()"
-        class="bg-slate-800 text-slate-100 hover:bg-slate-700 hover:underline uppercase font-bold py-1 px-2 rounded-md"
-      >
-        I like this
-      </button>
-    </section>
     <ul class="uppercase text-xs flex space-x-2 mb-12">
       <li
         v-for="tag in document.tags"
