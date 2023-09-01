@@ -11,7 +11,11 @@ import {
 </script>
 
 <template>
-  <ais-instant-search :index-name="indexName" :search-client="algolia">
+  <ais-instant-search
+    :index-name="indexName"
+    :search-client="algolia"
+    :insights="true"
+  >
     <ais-configure :hits-per-page.camel="65" />
 
     <div class="flex flex-col lg:flex-row p-4 mb-12">
