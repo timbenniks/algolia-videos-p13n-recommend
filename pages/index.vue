@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { simple } from "instantsearch.js/es/lib/stateMappings";
+import { history } from "instantsearch.js/es/lib/routers";
+
 const indexName = "VIDEOS";
 const algolia = useAlgoliaRef();
 import {
@@ -9,6 +12,11 @@ import {
   AisConfigure,
   AisSearchBox,
 } from "vue-instantsearch/vue3/es";
+
+const routing = {
+  router: history(),
+  stateMapping: simple(),
+};
 </script>
 
 <template>
@@ -16,6 +24,7 @@ import {
     :index-name="indexName"
     :search-client="algolia"
     :insights="true"
+    :routing="routing"
   >
     <ais-configure :hits-per-page.camel="65" />
 
@@ -34,6 +43,8 @@ import {
           :sort-by="['name']"
           attribute="tags"
           class="mb-4 py-2 px-3"
+          operator="and"
+          :limit="15"
           :class-names="{
             'ais-RefinementList-item': 'mb-1',
             'ais-RefinementList-checkbox': 'mr-2',
