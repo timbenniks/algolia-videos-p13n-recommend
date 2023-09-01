@@ -7,6 +7,7 @@ import {
   AisHits,
   AisClearRefinements,
   AisConfigure,
+  AisSearchBox,
 } from "vue-instantsearch/vue3/es";
 </script>
 
@@ -20,6 +21,15 @@ import {
 
     <div class="flex flex-col lg:flex-row p-4 mb-12">
       <div class="lg:pr-4 w-full md:w-1/6">
+        <ais-search-box
+          autofocus
+          :class-names="{
+            'ais-SearchBox': 'mb-4',
+            'ais-SearchBox-input': 'border border-1 rounded-md px-2 mr-2',
+          }"
+          placeholder="Search videos"
+        />
+
         <ais-refinement-list
           :sort-by="['name']"
           attribute="tags"
